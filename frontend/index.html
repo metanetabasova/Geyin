@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GEYİN - Şəxsi qarderob və ağıllı kombin köməkçisi">
+    <title>GEYİN | Ağıllı Qarderob</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">GEYİN<span>.</span></a>
+
+            <nav>
+                <a href="#home">Ana səhifə</a>
+                <a href="#wardrobe">Qarderobum</a>
+                <a href="#outfit">Kombin təklifi</a>
+            </nav>
+
+            <div class="auth-buttons" id="auth-buttons">
+                <button class="btn btn-outline" id="show-login">Daxil ol</button>
+                <button class="btn btn-dark" id="show-signup">Qeydiyyat</button>
+            </div>
+
+            <div class="user-panel hidden" id="user-panel">
+                <span id="username-display"></span>
+                <button class="btn btn-outline" id="logout-button">Çıxış</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="eyebrow">SƏNİN ŞƏXSİ STİL KÖMƏKÇİN</span>
+                    <h1>Bu gün nə geyinəcəyini <span>GEYİN</span> seçsin!</h1>
+                    <p>
+                        Öz qarderobunu yarat, hava məlumatlarını öyrən
+                        və hər gün geyimlərinə uyğun yeni kombinlər kəşf et.
+                    </p>
+                    <a href="#wardrobe" class="btn btn-dark">Qarderobumu yarat</a>
+                </div>
+
+                <div class="hero-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85"
+                        alt="Moda və geyim tərzi"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- WEATHER -->
+        <section class="weather-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="eyebrow">BU GÜNÜN HAVASI</span>
+                    <h2>Hava necədir?</h2>
+                </div>
+
+                <div class="weather-card">
+                    <div>
+                        <p class="muted">Məkan</p>
+                        <h3 id="weather-city">Hava məlumatı gözlənilir...</h3>
+                    </div>
+
+                    <div class="weather-main">
+                        <span id="weather-icon">🌤️</span>
+                        <strong id="weather-temperature">--°C</strong>
+                    </div>
+
+                    <div class="weather-details">
+                        <div>
+                            <span>Külək</span>
+                            <strong id="weather-wind">-- km/s</strong>
+                        </div>
+                        <div>
+                            <span>Yağıntı</span>
+                            <strong id="weather-rain">--%</strong>
+                        </div>
+                        <div>
+                            <span>Hava</span>
+                            <strong id="weather-description">--</strong>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline" id="refresh-weather">
+                        Havanı yenilə
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- WARDROBE -->
+        <section class="wardrobe-section" id="wardrobe">
+            <div class="container">
+
+                <div class="section-title">
+                    <span class="eyebrow">SƏNİN QARDEROBUN</span>
+                    <h2>Geyimlərini əlavə et</h2>
+                    <p>Öz geyimlərinin şəkillərini yüklə və şəxsi qarderobunu yarat.</p>
+                </div>
+
+                <div class="wardrobe-layout">
+
+                    <div class="upload-card">
+                        <h3>Yeni geyim əlavə et</h3>
+
+                        <form id="clothing-form">
+
+                            <label for="clothing-image" class="upload-area">
+                                <span class="upload-icon">＋</span>
+                                <strong>Şəkil seç</strong>
+                                <span>Geyimin şəklini buraya əlavə et</span>
+                                <img id="image-preview" class="hidden" alt="Geyim önizləməsi">
+                            </label>
+
+                            <input
+                                type="file"
+                                id="clothing-image"
+                                accept="image/*"
+                                required
+                                hidden
+                            >
+
+                            <label for="clothing-name">Geyimin adı</label>
+                            <input
+                                type="text"
+                                id="clothing-name"
+                                placeholder="Məsələn: Ağ köynək"
+                                required
+                                minlength="2"
+                                maxlength="100"
+                            >
+
+                            <label for="clothing-category">Kateqoriya</label>
+                            <select id="clothing-category" required>
+                                <option value="">Kateqoriya seç</option>
+                                <option value="Üst geyimi">Üst geyimi</option>
+                                <option value="Alt geyimi">Alt geyimi</option>
+                                <option value="Ayaqqabı">Ayaqqabı</option>
+                                <option value="Üst geyim / Gödəkçə">Gödəkçə</option>
+                                <option value="Don">Don</option>
+                                <option value="Aksesuar">Aksesuar</option>
+                            </select>
+
+                            <label for="clothing-color">Rəng</label>
+                            <input
+                                type="text"
+                                id="clothing-color"
+                                placeholder="Məsələn: Ağ"
+                            >
+
+                            <label for="clothing-season">Mövsüm</label>
+                            <select id="clothing-season">
+                                <option value="Bütün mövsümlər">Bütün mövsümlər</option>
+                                <option value="Yay">Yay</option>
+                                <option value="Qış">Qış</option>
+                                <option value="Yaz">Yaz</option>
+                                <option value="Payız">Payız</option>
+                            </select>
+
+                            <button type="submit" class="btn btn-dark full-width">
+                                Qarderoba əlavə et
+                            </button>
+
+                        </form>
+
+                        <p id="upload-message" class="message"></p>
+                    </div>
+
+                    <div class="wardrobe-content">
+                        <div class="wardrobe-heading">
+                            <h3>Mənim geyimlərim</h3>
+                            <span id="clothing-count">0 geyim</span>
+                        </div>
+
+                        <div id="wardrobe-list" class="wardrobe-grid">
+                            <div class="empty-state">
+                                <span>👕</span>
+                                <p>Hələ qarderobuna geyim əlavə etməmisən.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- OUTFIT RECOMMENDATION -->
+        <section class="outfit-section" id="outfit">
+            <div class="container">
+
+                <div class="section-title">
+                    <span class="eyebrow">SƏNİN ÜÇÜN HAZIRLANDI</span>
+                    <h2>Bu gün nə geyinim?</h2>
+                    <p>Hava şəraitinə və öz geyimlərinə uyğun kombin əldə et.</p>
+                </div>
+
+                <div class="outfit-card">
+                    <div class="outfit-info">
+                        <span class="outfit-icon">✨</span>
+                        <h3>Günün kombini</h3>
+                        <p id="outfit-description">
+                            Kombin təklifi almaq üçün əvvəlcə qarderobuna geyim əlavə et.
+                        </p>
+
+                        <button class="btn btn-dark" id="generate-outfit">
+                            Mənə kombin təklif et
+                        </button>
+                    </div>
+
+                    <div id="outfit-result" class="outfit-result">
+                        <div class="empty-state">
+                            <span>👗</span>
+                            <p>Sənin kombinin burada görünəcək.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="outfit-message" class="message"></p>
+            </div>
+        </section>
+
+        <!-- AUTH MODAL -->
+        <div class="modal hidden" id="auth-modal">
+            <div class="modal-content">
+                <button class="modal-close" id="close-modal">×</button>
+
+                <div id="login-form-container">
+                    <h2>Yenidən xoş gəldin!</h2>
+                    <p>GEYİN hesabına daxil ol.</p>
+
+                    <form id="login-form">
+                        <label>Email</label>
+                        <input type="email" id="login-email" required>
+
+                        <label>Şifrə</label>
+                        <input type="password" id="login-password" required>
+
+                        <button class="btn btn-dark full-width" type="submit">
+                            Daxil ol
+                        </button>
+                    </form>
+
+                    <p class="switch-auth">
+                        Hesabın yoxdur?
+                        <button type="button" id="switch-signup">Qeydiyyatdan keç</button>
+                    </p>
+                </div>
+
+                <div id="signup-form-container" class="hidden">
+                    <h2>GEYİN-ə qoşul!</h2>
+                    <p>Şəxsi qarderobunu yaratmağa başla.</p>
+
+                    <form id="signup-form">
+                        <label>İstifadəçi adı</label>
+                        <input type="text" id="signup-username" minlength="3" required>
+
+                        <label>Email</label>
+                        <input type="email" id="signup-email" required>
+
+                        <label>Şifrə</label>
+                        <input type="password" id="signup-password" minlength="8" required>
+
+                        <button class="btn btn-dark full-width" type="submit">
+                            Qeydiyyatdan keç
+                        </button>
+                    </form>
+
+                    <p class="switch-auth">
+                        Artıq hesabın var?
+                        <button type="button" id="switch-login">Daxil ol</button>
+                    </p>
+                </div>
+
+                <p id="auth-message" class="message"></p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="logo">GEYİN<span>.</span></a>
+            <p>Öz stilini yarat. Hər gün fərqli görün.</p>
+            <p>© 2026 GEYİN. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
